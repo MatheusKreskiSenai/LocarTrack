@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:LocarAndTrack.App.ViewModels"
+             xmlns:models="C:\Users\46274688811\source\repos\LocarTrack\LocarAndTrack.Models\LocarAndTrack.Models.csproj"
+             x:Class="LocarAndTrack.App.Views.LoginPage"
+             x:DataType="vm:LoginViewModel"
+             Shell.NavBarIsVisible="False"
+             Title="LoginPage">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#CE0000" Offset="0.0" />
+            <GradientStop Color="#390303" Offset="0.6" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid ColumnDefinitions="20,*,20">
+        <VerticalStackLayout Grid.Column="1">
+            <Image Source="locar_logo" Margin="0,30,0,0"/>
+            <VerticalStackLayout>
+                <Label Text="Login" TextColor="White" FontSize="15" Margin="20,0,0,5"/>
+                <Frame HeightRequest="70" CornerRadius="40">
+                    <HorizontalStackLayout>
+                        <Image Source="person.svg" HeightRequest="30"/>
+                        <Entry HeightRequest="70" FontSize="18" Margin="5,0,0,0" Text="{Binding Cpf}"/>
+                    </HorizontalStackLayout>
+                </Frame>
+                <Frame HeightRequest="70" CornerRadius="40" Margin="0,30,0,0">
+                    <HorizontalStackLayout>
+                        <Image Source="locker.svg" HeightRequest="30"/>
+                        <Entry HeightRequest="70" FontSize="18" Margin="5,0,0,0" WidthRequest="250" IsPassword="True" Text="{Binding Password}"/>
+                        <Image Source="eye"/>
+                    </HorizontalStackLayout>
+                </Frame>
+                <Label Text="Esqueceu sua senha?" TextColor="White" FontSize="15" Margin="0,10,20,0" HorizontalOptions="End"/>
+                <Button WidthRequest="150" CornerRadius="100" HeightRequest="50" BackgroundColor="#CE0000" Margin="0,20,0,0" Text="ENTRAR" 
+                            FontSize="20" FontAttributes="Bold" Command="{Binding EntrarCommand}"/>
+                <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,10">
+                    <Image Source="bar_colors" HeightRequest="50"/>
+                    <Label Text=" ● " TextColor="White" FontSize="35" VerticalTextAlignment="Center"/>
+                    <Image Source="letter" HeightRequest="50"/>
+                </HorizontalStackLayout>
+                <Label Text="Não tem uma conta?" TextColor="White" HorizontalOptions="Center" />
+                <Label Text="Cadastre-se" TextColor="White" HorizontalOptions="Center"/>
+                <Button HeightRequest="20" WidthRequest="100" Margin="0,-20,0,0" Command="{Binding RegistrarCommand}" BackgroundColor="#00000000" />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+        <Image Source="linhas" Grid.ColumnSpan="3" VerticalOptions="End" Margin="0,0,0,-70"/>
+    </Grid>
+
+</ContentPage>

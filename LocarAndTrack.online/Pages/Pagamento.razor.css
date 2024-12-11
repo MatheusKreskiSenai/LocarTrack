@@ -1,0 +1,152 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Josefin Sans';
+}
+
+.menu-nav {
+    display: flex;
+    background-color: rgba(226, 50, 43, 1);
+    justify-content: space-between;
+    padding: 10px;
+    height: 80px;
+}
+
+.body-nav1 {
+    display: flex;
+    justify-content: center;
+}
+
+.menu-nav img {
+    height: 150px;
+}
+
+.menu-nav ul {
+    display: flex;
+    padding-right: 50px;
+    padding-top: 25px;
+    gap: 50px;
+}
+
+.menu-nav li {
+    font-size: 18px;
+    list-style: none;
+}
+
+.menu-nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-superior {
+    display: flex;
+    background-color: rgba(203, 42, 39, 1);
+    justify-content: center;
+    align-items: center;
+    gap: 400px;
+    color: white;
+    height: 50px;
+    width: 700px;
+}
+
+.nav-inferior {
+    display: flex;
+    background-color: rgba(153, 29, 24, 1);
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width: 700px;
+}
+
+.input1 {
+    width: 250px;
+}
+
+.input2 {
+    width: 100px;
+}
+
+.nav-inferior input {
+    height: 30px;
+}
+
+.nav-superior h1 {
+    font-size: 20px;
+}
+
+.nav-superior img {
+    height: 50px;
+}
+
+
+.bodyinfo {
+    display: flex;
+}
+
+.documentos {
+    display: grid;
+}
+
+    .documentos input {
+        display: flex;
+        width: 300px;
+        height: 40px;
+        margin-bottom: 50px;
+    }
+
+.titulo {
+    font-style: medium;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 50px;
+    color: rgba(203, 42, 39, 1);
+}
+
+.efetuar {
+    width: 200px;
+    height: 40px;
+    background-color: transparent;
+    border-color: rgba(203, 42, 39, 1);
+    border-radius: 5%;
+    font-weight: 800;
+    border-width: 1px;
+}
+
+
+.bodyinfo {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 100px;
+}
+
+.infos {
+    width: 300px;
+    background-color: rgba(178, 28, 28, 0.7);
+    color: white;
+    height: 260px;
+    align-items: center;
+    margin-top: 100px;
+}
+
+    .infos h3 {
+        margin: 20px;
+    }
+
+.titulo2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(153, 29, 24, 0.8);
+    color: white;
+    font-size: 18px;
+    height: 50px;
+}
+
+.botaopag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}

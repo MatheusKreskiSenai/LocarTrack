@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MOBILE", "MOBILE", "{EC288AEF-78B8-4E80-8B2A-3DCB10D676D3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{15B2C205-4430-4B4E-A04F-41D80C7566D3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{A90E49D2-89E1-403F-9AE4-FBC370570AB4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocarAndTrack.Models", "LocarAndTrack.Models\LocarAndTrack.Models.csproj", "{EECBE281-1C7E-4BFF-8032-BD0CA1F82B0F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocarAndTrack.App", "LocarAndTrack.App\LocarAndTrack.App.csproj", "{EB0778C1-5FEF-42CD-B2CC-F7250100E1D3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocarAndTrack.api", "LocarAndTrack.api\LocarAndTrack.api.csproj", "{8BB24BB2-6302-4001-A40C-33FA3E7C4AB3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WEB", "WEB", "{12B3BDC9-3ED5-4DBE-A79F-F91BA1670FF5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocarAndTrack.online", "LocarAndTrack.online\LocarAndTrack.online.csproj", "{4F10B988-6A7B-40FB-A34B-05881B313324}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EECBE281-1C7E-4BFF-8032-BD0CA1F82B0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EECBE281-1C7E-4BFF-8032-BD0CA1F82B0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EECBE281-1C7E-4BFF-8032-BD0CA1F82B0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EECBE281-1C7E-4BFF-8032-BD0CA1F82B0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB0778C1-5FEF-42CD-B2CC-F7250100E1D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB0778C1-5FEF-42CD-B2CC-F7250100E1D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB0778C1-5FEF-42CD-B2CC-F7250100E1D3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{EB0778C1-5FEF-42CD-B2CC-F7250100E1D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB0778C1-5FEF-42CD-B2CC-F7250100E1D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB0778C1-5FEF-42CD-B2CC-F7250100E1D3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{8BB24BB2-6302-4001-A40C-33FA3E7C4AB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BB24BB2-6302-4001-A40C-33FA3E7C4AB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BB24BB2-6302-4001-A40C-33FA3E7C4AB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BB24BB2-6302-4001-A40C-33FA3E7C4AB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F10B988-6A7B-40FB-A34B-05881B313324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F10B988-6A7B-40FB-A34B-05881B313324}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F10B988-6A7B-40FB-A34B-05881B313324}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F10B988-6A7B-40FB-A34B-05881B313324}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EECBE281-1C7E-4BFF-8032-BD0CA1F82B0F} = {A90E49D2-89E1-403F-9AE4-FBC370570AB4}
+		{EB0778C1-5FEF-42CD-B2CC-F7250100E1D3} = {EC288AEF-78B8-4E80-8B2A-3DCB10D676D3}
+		{8BB24BB2-6302-4001-A40C-33FA3E7C4AB3} = {15B2C205-4430-4B4E-A04F-41D80C7566D3}
+		{4F10B988-6A7B-40FB-A34B-05881B313324} = {12B3BDC9-3ED5-4DBE-A79F-F91BA1670FF5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC8F2B79-C213-4E34-BB5C-62AB9C92DA4B}
+	EndGlobalSection
+EndGlobal

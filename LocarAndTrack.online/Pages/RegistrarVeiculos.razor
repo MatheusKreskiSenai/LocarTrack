@@ -1,0 +1,68 @@
+﻿@page "/addVeiculo"
+@inject HttpClient Http
+
+<h3>Registrar Veículo</h3>
+<EditForm Model="NovoVeiculo" OnValidSubmit="RegistrarVeiculo">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label>Placa:</label>
+        <InputText @bind-Value="NovoVeiculo.Placa" />
+    </div>
+
+    <div>
+        <label>Marca:</label>
+        <InputText @bind-Value="NovoVeiculo.Marca" />
+    </div>
+
+    <div>
+        <label>Tipo:</label>
+        <InputText @bind-Value="NovoVeiculo.Tipo" />
+    </div>
+
+    <div>
+        <label>Preço por Diária:</label>
+        <InputNumber @bind-Value="NovoVeiculo.PrecoDiaria" />
+    </div>
+
+    <div>
+        <label>Número de Passageiros:</label>
+        <InputNumber @bind-Value="NovoVeiculo.N_Passageiros" />
+    </div>
+
+    <div>
+        <label>Imagem do Carro:</label>
+        <InputFile OnChange="e => UploadedImage = e.File" />
+    </div>
+
+    <button type="submit">Registrar</button>
+</EditForm>
+
+@code {
+    private VeiculoModel NovoVeiculo = new VeiculoModel();
+    private IBrowserFile? UploadedImage;
+
+    private async Task RegistrarVeiculo()
+    {
+        if (UploadedImage != null)
+        {
+            var content = new MultipartFormDataContent();
+            var fileStream = UploadedImage.OpenReadStream();
+            content.Add(new StreamContent(fileStream), "file", UploadedImage.Name);
+
+            var imageResponse = await Http.PostAsync("/api/upload-image", content);
+            if (imageResponse.IsSuccessStatusCode)
+            {
+                NovoVeiculo.UrlCarroImage = await imageResponse.Content.ReadAsStringAsync();
+            }
+        }
+
+        var response = await Http.PostAsJsonAsync("/api/veiculos", NovoVeiculo);
+        if (response.IsSuccessStatusCode)
+        {
+            NovoVeiculo = new VeiculoModel();
+            UploadedImage = null;
+        }
+    }
+}

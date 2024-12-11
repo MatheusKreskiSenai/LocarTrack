@@ -1,0 +1,88 @@
+﻿@page "/cadastro"
+@layout MainLayout
+@inject AuthenticationStateProvider AuthStateProvider
+@inject ILocalStorageService LocalStorage
+@inject ISessionStorageService SessionStorage
+@inject IConfiguration Configuration
+@inject NavigationManager NavigationManager
+@inject IAuthenticationService AuthService
+
+<div class="cadastro">
+    <h1>Olá! Para começar, preencha seus dados básicos:</h1>
+    <EditForm class="form-basico" Model="Cliente" OnValidSubmit="Registrar">
+        <h2>Preencha seus dados de contato</h2>
+        <div class="atencao">
+            <img src="/img/pessoa.png" />
+            <div class="atencaotexto">
+                <h3>Atenção!</h3>
+                <p>Lembre-se de revisar os dados preenchidos, serão importantes para concluir o seu cadastro e realizar a sua reserva.</p>
+            </div>
+        </div>
+        <div class="dadosbasicos">
+            <InputText @bind-Value="Cliente.Nome" class="inputText" placeholder="Nome Completo *" />
+            <ValidationMessage For="@(() => Cliente.Nome)" class="inputText" />
+        </div>
+        <div>
+            <InputText @bind-Value="Cliente.CPF" class="inputText" placeholder="CPF *" />
+            <ValidationMessage For="@(() => Cliente.CPF)" />
+        </div>
+        <div class="inputtext2">
+            <InputText @bind-Value="Cliente.Telefone" class="inputText" placeholder="Celular *" />
+            <ValidationMessage For="@(() => Cliente.Telefone)" />
+        </div>
+        <div class="emailinput">
+            <InputText @bind-Value="Cliente.Email" class="inputText" placeholder="Email *" />
+            <ValidationMessage For="@(() => Cliente.Email)" />
+        </div>
+        <div class="senharequisitos">
+            <div class="senhainput">
+                <InputText @bind-Value="Cliente.Password" class="inputText" placeholder="Senha *" />
+                <ValidationMessage For="@(() => Cliente.Password)" />
+            </div>
+            <div class="requisitos">
+                <h1>REQUISITOS PARA UMA SENHA FORTE</h1>
+                <ul class="ulrequisitos">
+                    <li>ter no mínimo 10 caracteres</li>
+                    <li>ter pelo menos um caractere especial</li>
+                    <li>ter pelo menos uma letra maiúscula</li>
+                    <li>ter pelo menos um letra minúscula</li>
+                    <li>ter pelo menos um número</li>
+                    <li>Confirmação de senha digitada não confere com a senha</li>
+                </ul>
+            </div>
+        </div>
+        <button type="submit" class="confirmar">Confirmar</button>
+    </EditForm>
+    <div class="texto2">
+        <img src="/img/pessoa2.png" />
+        <p>As informações coletadas no cadastro do cliente serão utilizadas para identificação das reservas e execução de contrato entre o titular e a Localiza. Para mais informações sobre o tratamento de dados pessoais, acesse nosso Portal de Privacidade.</p>
+    </div>
+</div>
+
+@code {
+    private RegisterModel Cliente = new RegisterModel();
+
+    private bool hasError = false;
+    private string errorMsg = string.Empty;
+    private string returnUrl = string.Empty;
+    private bool isBusy;
+
+    async Task Registrar()
+    {
+        isBusy = true;
+
+        Cliente.PerfilId = 2;
+
+        var result = await AuthService.Register(Cliente);
+        if (result)
+        {
+            NavigationManager.NavigateTo(returnUrl);
+        }
+        else
+        {
+            isBusy = false;
+            hasError = true;
+            errorMsg = "Não foi possível finalizar o registro.";
+        }
+    }
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LocarAndTrack.App.Views.PerfilPage"
+             Shell.NavBarIsVisible="False"
+             Title="PerfilPage">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#680000" Offset="0.03" />
+            <GradientStop Color="#CE0000" Offset="0.09" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    
+    <VerticalStackLayout>
+        <Grid ColumnDefinitions="30,*,30" RowDefinitions="75,*">
+            <Frame HeightRequest="1000" WidthRequest="400" BackgroundColor="White" CornerRadius="150" Grid.ColumnSpan="3" Grid.Row="1"></Frame>
+            <VerticalStackLayout Grid.Column="1" Grid.Row="1" Margin="0,-50,0,0" HorizontalOptions="Center">
+                <Image Source="foto_perfil" HeightRequest="150"/>
+                <Label Text="Satoru Gojo" TextColor="#680000" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="30"/>
+                <Label Text="Strongest sorcerer" TextColor="#CE0000" HorizontalTextAlignment="Center" FontSize="20"/>
+                <Label Text="Are you the strongest ‘cause you are Satoru Gojo, or are you Satoru Gojo ‘cause you are the strongest?" 
+                       HorizontalTextAlignment="Center" TextColor="Black" Margin="0,15,0,0" />
+                <Button Text="EDITAR" BackgroundColor="#00FF0000" TextColor="#680000" BorderColor="#680000" BorderWidth="1" WidthRequest="150" Margin="0,15"/>
+                <Label Text="Antigas Reservas:" TextColor="#680000" FontAttributes="Bold" FontSize="25" Margin="0,0,0,15"/>
+                <Grid ColumnDefinitions="*,*,*">
+                    <Frame Grid.Column="0" WidthRequest="100" HeightRequest="150" BackgroundColor="#D9D9D9"></Frame>
+                    <Frame Grid.Column="1" WidthRequest="100" HeightRequest="150" BackgroundColor="#D9D9D9"></Frame>
+                    <Frame Grid.Column="2" WidthRequest="100" HeightRequest="150" BackgroundColor="#D9D9D9"></Frame>
+                </Grid>
+            </VerticalStackLayout>
+        </Grid>
+    </VerticalStackLayout>
+
+</ContentPage>

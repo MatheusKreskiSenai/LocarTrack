@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:LocarAndTrack.App.ViewModels"
+             x:Class="LocarAndTrack.App.Views.CadastroPage"
+             x:DataType="vm:CadastroViewModel"
+             Title="CadastroPage"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
+            <GradientStop Color="#CE0000" Offset="0.0" />
+            <GradientStop Color="#390303" Offset="0.6" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid ColumnDefinitions="30,*,30">
+        <VerticalStackLayout Grid.Column="1">
+            <Image Source="locar_logo" Margin="0,30,0,0"/>
+            <VerticalStackLayout>
+                <Label Text="Login" TextColor="White" FontSize="15" Margin="20,0,0,5"/>
+                <Frame HeightRequest="70" CornerRadius="40">
+                    <HorizontalStackLayout>
+                        <Image Source="person.svg" HeightRequest="30"/>
+                        <Entry HeightRequest="70" FontSize="18" Margin="5,0,0,0" WidthRequest="250" Text="{Binding Nome}"/>
+                    </HorizontalStackLayout>
+                </Frame>
+                <Frame HeightRequest="70" CornerRadius="40" Margin="0,30,0,0">
+                    <HorizontalStackLayout>
+                        <Image Source="world.png" HeightRequest="30"/>
+                        <Entry HeightRequest="70" FontSize="18" Margin="5,0,0,0" WidthRequest="250" Text="{Binding Email}"/>
+                    </HorizontalStackLayout>
+                </Frame>
+                <Frame HeightRequest="70" CornerRadius="40" Margin="0,30,0,0">
+                    <HorizontalStackLayout>
+                        <Image Source="chain.svg" HeightRequest="30"/>
+                        <Entry HeightRequest="70" FontSize="18" Margin="5,0,0,0" WidthRequest="250" Text="{Binding Cpf}"/>
+                    </HorizontalStackLayout>
+                </Frame>
+                <Frame HeightRequest="70" CornerRadius="40" Margin="0,30,0,0">
+                    <HorizontalStackLayout>
+                        <Image Source="locker.svg" HeightRequest="30"/>
+                        <Entry HeightRequest="70" FontSize="18" Margin="5,0,0,0" WidthRequest="250" IsPassword="True" Text="{Binding Password}"/>
+                        <Image Source="eye"/>
+                    </HorizontalStackLayout>
+                </Frame>
+                <Button WidthRequest="150" CornerRadius="100" HeightRequest="50" BackgroundColor="#CE0000" Margin="0,20,0,0" Text="CADASTRO"
+                            FontSize="20" FontAttributes="Bold" Command="{Binding EntrarCommand}"/>
+                <Label Text="Login" TextColor="White" HorizontalOptions="Center" Margin="0,20,0,0"/>
+                <Button HeightRequest="20" WidthRequest="100" Margin="0,-20,0,0" Command="{Binding LogarCommand}" BackgroundColor="#00000000"/>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+        <Image Source="linhas" Grid.ColumnSpan="3" VerticalOptions="End" Margin="0,0,0,-130"/>
+    </Grid>
+</ContentPage>

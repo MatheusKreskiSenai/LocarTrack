@@ -1,0 +1,116 @@
+﻿@page "/automotivos"
+@layout MainLayout
+@inject HttpClient httpClient
+@inject AuthenticationStateProvider AuthStateProvider
+@inject ILocalStorageService LocalStorage
+@inject ISessionStorageService SessionStorage
+@inject IConfiguration Configuration
+@inject NavigationManager NavigationManager
+@inject IAuthenticationService AuthService
+
+    <div class="linha"></div>
+    <div class="linha2"></div>
+    <div class="grid-container">
+        <div class="grid-item">
+            <h1>GRUPO LOCAR&TRACK AUTOMATICO</h1>
+            <img class="carroitem" src="/img/carropreto.png"/>
+            <div class="container-texto">
+            <h1>TOYOTA LAND CRUISER PRADO</h1>
+            <h2>3.0 4X4 TURBO INTERCOOLER DIESEL 4P AUTOMÁTICO</h2>
+            <p>*Sua reserva garante o modelo de carro acima, estando sujeito à disponibilidade da agência.</p>
+            <button><a href="/pagamento">RESERVA AGORA</a></button>
+            </div>
+        </div>
+        <div class="grid-item">
+            <h1>GRUPO LOCAR&TRACK AUTOMATICO</h1>
+            <img src="/img/carrocinza.png"/>
+            <div class="container-texto">
+            <h1>NISSAN PATHFINDER</h1>
+            <h2>2.5 SE 4X4 TURBO INTERCOOLER DIESEL 4P AUTOMÁTICO</h2>
+            <p>*Sua reserva garante o modelo de carro acima, estando sujeito à disponibilidade da agência.</p>
+            <button><a href="/pagamento">RESERVA AGORA</a></button>
+            </div>
+        </div>
+        <div class="grid-item">
+            <h1>GRUPO LOCAR&TRACK AUTOMATICO</h1>
+            <img src="/img/carrobranco.png"/>
+            <div class="container-texto">
+            <h1>MAZDA DEMIO</h1>
+            <h2>2008/91,340CC AUTOMÁTICO GASOLINA</h2>
+            <p>*Sua reserva garante o modelo de carro acima, estando sujeito à disponibilidade da agência.</p>
+            <button><a href="/pagamento">RESERVA AGORA</a></button>
+            </div>
+        </div>
+        <div class="grid-item">
+            <h1>GRUPO LOCAR&TRACK AUTOMATICO</h1>
+            <img src="/img/carrored.png"/>
+            <div class="container-texto">
+            <h1>VOLKSVAGEN SHANGKU</h1>
+            <h2>2.0GTS 2023 L 280TSI DSG SPORTY EDITION GASOLINA</h2>
+            <p>*Sua reserva garante o modelo de carro acima, estando sujeito à disponibilidade da agência.</p>
+            <button><a href="/pagamento">RESERVA AGORA</a></button>
+            </div>
+        </div>
+        <div class="grid-item">
+            <h1>GRUPO LOCAR&TRACK AUTOMATICO</h1>
+            <img src="/img/corolla.png"/>
+            <div class="container-texto">
+            <h1>TOYOTA COROLLA</h1>
+            <h2>2.0 ALTIS 16V FLEX 4P AUTOMÁTICO FLEX</h2>
+            <p>*Sua reserva garante o modelo de carro acima, estando sujeito à disponibilidade da agência.</p>
+            <button><a href="/pagamento">RESERVA AGORA</a></button>
+            </div>
+        </div>
+        <div class="grid-item">
+            <h1>GRUPO LOCAR&TRACK AUTOMATICO</h1>
+            <img src="/img/peugeot.png"/>
+            <div class="container-texto">
+            <h1>PEUGEOT 308</h1>
+            <h2>1.6 GRIFFE THP 16V GASOLINA 4P AUTOMÁTICO</h2>
+            <p>*Sua reserva garante o modelo de carro acima, estando sujeito à disponibilidade da agência.</p>
+            <button><a href="/pagamento">RESERVA AGORA</a></button>
+            </div>
+        </div>
+        @if (veiculos == null)
+        {
+            <p>Carregando...</p>
+        }
+        else if (!veiculos.Any())
+        {
+            <p>Nenhum veículo encontrado!</p>
+        }
+        else
+        {
+            <div class="row">
+                @foreach (var veiculo in veiculos)
+                {
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img class="card-img-top" src="@veiculo.UrlCarroImage" alt="@veiculo.Marca">
+                            <div class="card-body">
+                                <h5 class="card-title">@veiculo.Marca @veiculo.Tipo</h5>
+                                <p class="card-text">Preço Diária: R$ @veiculo.PrecoDiaria</p>
+                                <p class="card-text">Passageiros: @veiculo.N_Passageiros</p>
+                                <a href="#" class="btn btn-primary">Reservar Agora</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+      </div>
+
+@code{
+    private List<Veiculo>? veiculos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var veiculosService = new VeiculoService(httpClient);
+        veiculos = await veiculosService.ObterVeiculosAsync();
+    }
+
+    async Task Reservar()
+    {
+        NavigationManager.NavigateTo("/pagamento");
+    }
+}

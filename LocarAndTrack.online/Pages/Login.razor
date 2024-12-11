@@ -1,0 +1,106 @@
+﻿@page "/login"
+@layout MainLayout
+@inject HttpClient Http
+@inject AuthenticationStateProvider AuthStateProvider
+@inject ILocalStorageService LocalStorage
+@inject ISessionStorageService SessionStorage
+@inject IConfiguration Configuration
+@inject NavigationManager NavigationManager
+@inject IAuthenticationService AuthService
+
+<div class="bodybottom">
+    <div class="loginbody">
+        <img class="logopreta" src="/img/logopreta.png" />
+        <div class="entrartx">
+            <div class="linha"></div>
+            <p>Entrar com</p>
+            <div class="linha"></div>
+        </div>
+        <div class="Botoes">
+            <div class="logos">
+                <button>
+                    <img src="/img/googlelogo.png" />
+                    Google
+                </button>
+            </div>
+            <div class="logos">
+                <button>
+                    <img src="/img/applelogo.png" />
+                    Apple
+                </button>
+            </div>
+            <div class="logos">
+                <button>
+                    <img src="/img/emaillogo.png" />
+                    Email ou CPF
+                </button>
+            </div>
+        </div>
+        <EditForm Model="Cliente" OnSubmit="Logar">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="loginemail">
+                <InputText @bind-Value="Cliente.Email" type="email" placeholder="Email ou CPF *" />
+                <ValidationMessage For="@(() => Cliente.Email)"/>
+            </div>
+            <div>
+                <InputText @bind-Value="Cliente.Password" type="password" placeholder="Senha *" />
+                <ValidationMessage For="@(() => Cliente.Password)" />
+            </div>
+            <div class="checkbox">
+                <p>Esqueci a Senha</p>
+            </div>
+            @if (hasError)
+                                {
+                                    <div class="alert alert-danger" role="alert">
+                                        <span>@errorMessage</span>
+                                    </div>
+                                }
+                                @if (isBusy)
+                                {
+                                    <div class="row d-flex justify-content-center">
+                                        <DisplaySpinnerComponent />
+                                    </div>
+                                }
+            <div class="botaoentrar">
+                <button class="Entrar" type="submit">Entrar</button>
+            </div>
+        </EditForm>
+        <a href="/cadastro">Ainda não tenho cadastro</a>
+    </div>
+</div>
+
+@code{
+    ClienteLogin Cliente = new ClienteLogin();
+
+    private bool hasError = false;
+    private string errorMessage = string.Empty;
+    private string returnUrl = string.Empty;
+    private bool isBusy;
+
+    protected override void OnInitialized()
+    {
+
+        var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("returnUrl", out var url))
+        {
+            returnUrl = url;
+        }
+    }
+
+    async Task Logar()
+    {
+        isBusy = true;
+        var token = await AuthService.Login(Cliente);
+        if (!string.IsNullOrEmpty(token))
+        {
+            await SessionStorage.SetItemAsync("authToken", token);
+            await AuthStateProvider.GetAuthenticationStateAsync();
+            NavigationManager.NavigateTo(returnUrl);
+        }
+        else
+        {
+            isBusy = false; 
+        }
+    }
+}

@@ -1,0 +1,6 @@
+@LocarAndTrack.api_HostAddress = http://localhost:5279
+
+GET {{LocarAndTrack.api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

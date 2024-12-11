@@ -1,0 +1,41 @@
+﻿@page "/pagamento"
+@layout MainLayout
+
+<div class="body-nav1">
+    <div class="body-nav">
+        <div class="nav-superior">
+            <img src="/img/carroicon.png" alt="img" />
+            <h1>Grupo de Carros</h1>
+        </div>
+        <div class="nav-inferior">
+            <input class="input1" placeholder="Digite o local de retirada" />
+            <input class="input2" type="date" />
+            <input type="time" />
+        </div>
+    </div>
+</div>
+<div class="bodyinfo">
+    <div class="documentos">
+        <h1 class="titulo">Preencha seus dados de pagamento</h1>
+        <input placeholder="Dias:" type="number" />
+        <input placeholder="Número do Cartão:" type="number" />
+        <input placeholder="Data de Validade*" type="date" />
+        <input placeholder="CVV*" type="number" />
+
+    </div>
+    <div class="infos">
+        <h2 class="titulo2">VALOR TOTAL DA RESERVA:</h2>
+        <h3 class="text">Modelo do Carro:</h3>
+        <h3 class="text">Valor Diario</h3>
+        <h3 class="text">Quantidade de Parcelas:</h3>
+        <h3 class="text">Taxa:</h3>
+        <h3 class="text">Total:</h3>
+    </div>
+</div>
+<div class="botaopag">
+    <button class="efetuar">EFETUAR RESERVA</button>
+</div>
+
+@code {
+
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LocarAndTrack.App.Views.CarrosPage"
+             Shell.NavBarIsVisible="False"
+             Title="CarrosPage">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#680000" Offset="0.03" />
+            <GradientStop Color="#CE0000" Offset="0.09" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <VerticalStackLayout>
+        <Grid ColumnDefinitions="30,*,30" RowDefinitions="75,*">
+            <Frame HeightRequest="1000" WidthRequest="400" BackgroundColor="White" CornerRadius="40" Grid.ColumnSpan="3" Grid.Row="1"></Frame>
+            <VerticalStackLayout Grid.Column="1" Grid.Row="1" Margin="10">
+                <Label Text="GRUPO LOCAR TRACK AUTOMÁTICO" TextColor="Black" HorizontalOptions="Center" FontAttributes="Bold" Margin="0,10"/>
+                <Frame BackgroundColor="#680000" BorderColor="#00FF0000">
+                    <VerticalStackLayout HorizontalOptions="Center">
+                        <Image Source="toyota.png" HeightRequest="200"/>
+                        <Label Text="TOYOTA LAND CRUISER PRADO" FontAttributes="Bold"/>
+                        <Label Text="3.0 4X4 TURBO INTERCOOLER DIESEL 4P AUTOMÁTICO"/>
+                        <Label Text="*Sua reserva garante o modelo de carro acima, estando sujeito à disponibilidade da agência." FontSize="8"/>
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </Grid>
+    </VerticalStackLayout>
+        
+</ContentPage>

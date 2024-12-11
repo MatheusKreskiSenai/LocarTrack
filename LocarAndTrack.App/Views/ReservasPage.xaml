@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LocarAndTrack.App.Views.ReservasPage"
+             Shell.NavBarIsVisible="False"
+             Title="ReservasPage">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#680000" Offset="0.03" />
+            <GradientStop Color="#CE0000" Offset="0.09" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <VerticalStackLayout>
+        <Grid ColumnDefinitions="30,*,30" RowDefinitions="75,*">
+            <Frame HeightRequest="1000" WidthRequest="400" BackgroundColor="White" CornerRadius="40" Grid.ColumnSpan="3" Grid.Row="1"></Frame>
+            <VerticalStackLayout Grid.Column="1" Grid.Row="1" Margin="10">
+                <Label Text="Consultar Reservas" TextColor="#CB2A27" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,60,0,20"/>
+                <Label Text="Entre com o código e um documento para consultar suas reservas." TextColor="#680000" HorizontalTextAlignment="Center"/>
+                <Frame HeightRequest="170" Margin="0,30,0,70" BackgroundColor="#D9D9D9">
+                    <VerticalStackLayout VerticalOptions="Center">
+                        <Entry Placeholder="Número do CPF *" Margin="0,0,0,20" PlaceholderColor="#680000"/>
+                        <Entry Placeholder="Código da Reserva *" PlaceholderColor="#680000"/>
+                    </VerticalStackLayout>
+                </Frame>
+                <Button WidthRequest="200" HeightRequest="60" Text="CONSULTAR RESERVA" TextColor="#680000" FontAttributes="Bold" 
+                        BackgroundColor="#00FF0000" BorderColor="#680000" BorderWidth="1"/>
+            </VerticalStackLayout>
+        </Grid>
+        
+    </VerticalStackLayout>
+</ContentPage>
