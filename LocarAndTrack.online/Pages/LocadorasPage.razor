@@ -1,0 +1,42 @@
+﻿@page "/locadoras"
+
+@inject HttpClient httpClient
+
+<PageTitle>Locadoras</PageTitle>
+<h3>Locadoras</h3>
+
+<div>
+    <ul class="list-unstyled">
+        @if (Locadoras is not null)
+        {
+            @foreach (var item in Locadoras)
+            {
+                <li>
+                    <a href="#" class="text-decoration-none text-black-50">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@item.Nome</h5>
+                                        <p class="card-text">@item.Endereco.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+    <a class="btn btn-primary" href="/novalocadora">Nova Locadora</a>
+</div>
+
+@code {
+    public List<Locadora> Locadoras { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var locadoraService = new LocadoraService(httpClient);
+        Locadoras = await locadoraService.ObterLocadorasAsync();
+    }
+}

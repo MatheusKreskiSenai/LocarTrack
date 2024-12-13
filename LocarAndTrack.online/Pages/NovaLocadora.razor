@@ -1,0 +1,41 @@
+﻿@page "/novalocadora"
+@inject HttpClient Http
+@inject IJSRuntime JS
+@inject NavigationManager NavManager
+
+<h3>Nova Locadora</h3>
+<EditForm Model="Locadora" OnInvalidSubmit="AddLocadora">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label>Nome</label>
+        <InputText @bind-Value="Locadora.Nome"/>
+        <ValidationMessage For="@(() => Locadora.Nome)" class="inputText" />
+    </div>
+
+    <div>
+        <label>Endereco</label>
+        <InputText @bind-Value="Locadora.Endereco" />
+        <ValidationMessage For="@(() => Locadora.Endereco)" class="inputText" />
+    </div>
+
+    <button type="submit">Registrar</button>
+</EditForm>
+
+@code {
+    [SupplyParameterFromForm]
+    public Locadora? Locadora { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Locadora ??= new();
+    }
+
+    async Task AddLocadora()
+    {
+        var ms = new LocadoraService(Http);
+        var result = await ms.PostLocadora(Locadora);
+        NavManager.NavigateTo("/locadoras");
+    }
+}
